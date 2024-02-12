@@ -6,7 +6,8 @@ public class PlayerControllor : MonoBehaviour
 {
     public float horizontalInput;
     public float speed = 10.0f;
-  
+    bool canshoot = true;
+    public float cooldown = 1.0f;
 
     public GameObject projectilePrefab;
     // Start is called before the first frame update
@@ -18,15 +19,25 @@ public class PlayerControllor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //shoot and Cooldown
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * -horizontalInput * Time.deltaTime* speed);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canshoot == true)
         {
+            canshoot = false;
             Instantiate(projectilePrefab, transform.position, transform.rotation);
+            StartCoroutine(cooldowntimer());
+
         }
+        IEnumerator cooldowntimer()
+        {
+            yield return new WaitForSeconds(cooldown);
+            canshoot = true;
+        }
+
         //Left and right berrier
-        if(transform.position.x < -26) 
+        if (transform.position.x < -26) 
         {
             transform.position = new Vector3(-26, transform.position.y, transform.position.z);
         }
@@ -51,3 +62,4 @@ public class PlayerControllor : MonoBehaviour
             }
     }
 }
+

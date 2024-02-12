@@ -6,7 +6,7 @@ public class SpawnMannager : MonoBehaviour
 {
     public GameObject Ghost;
     public Vector3 spawnPos;
-    private float startDelay = 5;
+    private float startDelay = 10;
     private float spawnInterval = 7.0f;
     public Transform RightLongHall;
     public Transform LeftLongHall;
@@ -29,7 +29,7 @@ public class SpawnMannager : MonoBehaviour
         if (spawnpointPicker == 3) 
         {
             //come from right door
-            spawnPos = new Vector3(-10, 1, -60);
+            spawnPos = new Vector3(-10, 1, -55);
         }
         Instantiate(Ghost, spawnPos, Ghost.transform.rotation);
 

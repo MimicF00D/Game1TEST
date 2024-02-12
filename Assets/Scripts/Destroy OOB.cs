@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyOOB : MonoBehaviour
 {
@@ -15,12 +16,15 @@ public class DestroyOOB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (transform.position.z < topBound)
         {
             Destroy(gameObject);
         } else if (transform.position.z > bottomBound)
         {
             Destroy(gameObject);
+
         }
     }
+     
 }

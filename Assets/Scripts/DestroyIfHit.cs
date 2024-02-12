@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EliminateObjectcolider : MonoBehaviour
 {
@@ -23,7 +24,11 @@ public class EliminateObjectcolider : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
-            
         }
-    }
+
+        if (other.tag == "Finish")
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
+        }
 }
